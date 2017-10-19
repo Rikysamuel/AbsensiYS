@@ -2,7 +2,7 @@
 require_once '../Manager/DbManager.php';
 ?>
 
-<div class = "alert alert-info">Accounts / Jemaat</div>
+<div class = "alert alert-info"> Jemaat Listing</div>
 <div class = "modal fade" id = "add_jemaat" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
 	<div class = "modal-dialog" role = "document">
 		<div class = "modal-content panel-primary">

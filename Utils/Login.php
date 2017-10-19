@@ -15,6 +15,7 @@
 				echo 'success';
 				session_start();
 				$_SESSION['username'] = $ret[0]['username'];
+				$_SESSION['login_role'] = $ret[0]['role'];
 
 				$ret = Update("admin", "login_attempt", "0", "username='$user'");
 			}

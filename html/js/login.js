@@ -34,7 +34,7 @@ $(document).ready(function(){
 					function(result){
 						if(result == 'success'){
 							$.post("../Utils/UpdateLastLogin.php", {username: username});
-							window.location = 'Dashboard.php';
+							window.location = 'AttendanceListing.php';
 						}else{
 							if (result == 'locked') {
 								error_result_locked.fadeIn().appendTo('#result');

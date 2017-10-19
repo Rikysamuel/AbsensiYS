@@ -4,4 +4,4 @@
 	$id = escape($_REQUEST["attendance_id"]);
 	$ret = Delete("attendance", "attendance_id = '$id'");
 
-	header('location: ../Pages/AttendanceListing.php');
+	header('location: ../Pages/Attendance.php');

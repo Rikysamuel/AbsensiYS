@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <?php
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+	    session_start();
+	}
+	
 	if(!ISSET($_SESSION['username'])){
 		header('location: ../Pages/Login.php');
 	}
+
+	ob_start();
+	require("../Widgets/Navigation/WNavigation.php");
+	$navbar = ob_get_clean();
 ?>
 <html lang = "eng">
 	<head>
@@ -17,29 +24,14 @@
 		<script src = "../html/js/bootstrap.js"></script>
 	</head>
 	<body>
-		<nav class = "navbar navbar-inverse navbar-fixed-top">
-			<ul class = "nav nav-pills">
-				<li><a href = "home.php"><span class = "glyphicon glyphicon-home"></span> Home</a></li>
-				<li class = "dropdown">
-					<a class = "dropdown-toggle" data-toggle = "dropdown" href = "#"><span class = "glyphicon glyphicon-cog"></span> Accounts <span class = "caret"></span></a>
-					<ul class = "dropdown-menu">
-						<li><a href = "../Pages/Admin.php"><span class = "glyphicon glyphicon-user"></span> Admin</a></li>
-						<li><a href = "../Pages/Jemaat.php"><span class = "glyphicon glyphicon-user"></span> Jemaat</a></li>
-					</ul>
-				</li>
-				<li><a href = "../Pages/AttendanceListing.php"><span class = "glyphicon glyphicon-book"></span> Attendance Listing</a></li>
-				<li class = "dropdown pull-right">
-					<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "glyphicon glyphicon-user"></i> <?php echo $_SESSION['username'] ?> <b class = "caret"></b></a>
-					<ul class = "dropdown-menu">
-						<li><a href = "..\Utils\logout.php"><i class = "glyphicon glyphicon-off"></i> Logout</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
+		<!-- header -->
+		<?php echo $navbar; ?>
 
+		<!-- main -->
 		<br />
 		<div style="padding-top: 50px"><?php echo $content; ?></div>
 		
+		<!-- footer -->
 		<div class = "navbar navbar-fixed-bottom alert-warning">
 			<div class = "container-fluid">
 				<label class = "pull-left">&copy; Pengabsenan Jemaat Youth Shalom</label>

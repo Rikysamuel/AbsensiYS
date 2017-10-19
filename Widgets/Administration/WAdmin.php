@@ -66,7 +66,7 @@ require_once '../Manager/DbManager.php';
 		</div>
 	</div>
 </div>
-<div class = "alert alert-info">Accounts / Admin</div>
+<div class = "alert alert-info"> Admin Listing</div>
 <div class = "well col-lg-12">
 	<button type = "button" class = "btn btn-success" data-target = "#myModal" data-toggle = "modal"><span class = "glyphicon glyphicon-plus"></span> Add new</button>
 	<br />
@@ -90,7 +90,14 @@ require_once '../Manager/DbManager.php';
 				<td><?php echo $res['username']?></td>
 				<td><?php echo $res['last_login']?></td>
 				<td><?php echo $res['is_locked_out']?></td>
-				<td><a class = "btn btn-danger radmin_id" name = "<?php echo $res['admin_id']?>" href = "#" data-toggle = "modal" data-target = "#delete"><span class = "glyphicon glyphicon-remove"></span></a> <a class = "btn btn-warning  eadmin_id" name = "<?php echo $res['admin_id']?>" href = "#" data-toggle = "modal" data-target = "#edit_admin"><span class = "glyphicon glyphicon-edit"></span></a></td>
+				<td>
+					<a class = "btn btn-danger radmin_id" name = "<?php echo $res['admin_id']?>" href = "#" data-toggle = "modal" data-target = "#delete">
+						<span class = "glyphicon glyphicon-remove"></span>
+					</a> 
+					<a class = "btn btn-warning  eadmin_id" name = "<?php echo $res['admin_id']?>" href = "#" data-toggle = "modal" data-target = "#edit_admin">
+						<span class = "glyphicon glyphicon-edit"></span>
+					</a>
+				</td>
 			</tr>
 			<?php
 			}

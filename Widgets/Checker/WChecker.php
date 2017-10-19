@@ -5,17 +5,10 @@
 	}
 ?>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="../html/css/jquery-ui.min.css">
 
 <div class = "container-fluid">
-	<?php
-		$id = $_GET['id'];
-		$ret = Select("attendance_listing", "id='$id'");
-		if (count($ret) > 0) {
-			echo "<label><h3 id='titleId'>Title: ".$ret[0]["title"]."</h3></label>";
-		}
-	?>
+	<br />
 	<br />
 	<br />
 	<br />
@@ -28,6 +21,13 @@
 		<div class="col-md-8">
 		<form action="POST">
 			<div class = "ui-widget">
+				<?php
+					$id = $_GET['id'];
+					$ret = Select("attendance_listing", "id='$id'");
+					if (count($ret) > 0) {
+						echo "<label><h3 id='titleId'>Title: ".$ret[0]["title"]."</h3></label>";
+					}
+				?>
 				<h1>Name:</h1>
 				<input type="text" id="name" class="form-control" required="required" placeholder="Please Enter Some Name"/>
 				<br />
@@ -42,6 +42,7 @@
 	</div>
 </div>
 
+<script src = "../html/js/jquery-ui.min.js"></script>
 <script>
 	 var nameListLabel = [ ];
 	 var nameListValue = { };

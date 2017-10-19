@@ -1,5 +1,9 @@
 <?php
-require_once '../Manager/DbManager.php';
+	require_once '../Manager/DbManager.php';
+
+	if (session_status() == PHP_SESSION_NONE) {
+	    session_start();
+	}
 ?>
 
 <div class = "alert alert-info">Attendance Listing</div>
@@ -35,6 +39,17 @@ require_once '../Manager/DbManager.php';
 		</div>
 	</div>
 </div>
+<div class = "modal fade" id = "delete" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
+	<div class = "modal-dialog" role = "document">
+		<div class = "modal-content ">
+			<div class = "modal-body">
+				<center><label class = "text-danger">Are you sure you want to delete this record?</label></center>
+				<br />
+				<center><a class = "btn btn-danger remove_id" ><span class = "glyphicon glyphicon-trash"></span> Yes</a> <button type = "button" class = "btn btn-warning" data-dismiss = "modal" aria-label = "No"><span class = "glyphicon glyphicon-remove"></span> No</button></center>
+			</div>
+		</div>
+	</div>
+</div>
 <div class = "well col-lg-12">
 	<button class = "btn btn-success" type = "button" href = "#" data-toggle = "modal" data-target = "#add_jemaat"><span class = "glyphicon glyphicon-plus"></span> Add new </button>
 	<br />
@@ -58,9 +73,17 @@ require_once '../Manager/DbManager.php';
 						<a class = "btn btn-warning  eattendance_id" name = "<?php echo $res['id']?>" href = "#" data-toggle = "modal" data-target = "#edit_attendance">
 							<span class = "glyphicon glyphicon-edit"></span>
 						</a>
-						<a class = "btn btn-warning  vattendance_id" name = "<?php echo $res['id']?>" href = "#" data-toggle = "modal" data-target = "#vdit_attendance">
+						<a class = "btn btn-warning  vattendance_id" name = "<?php echo $res['id']?>">
 							<span class = "glyphicon glyphicon-th"></span>
 						</a>
+						<?php
+							if ($_SESSION["login_role"] != 2) {
+								$attendace_id = $res['id'];
+								echo "<a class = 'btn btn-danger rattendance_id' name = ".$attendace_id." href = '#' data-toggle = 'modal' data-target = '#delete'>
+										<span class = 'glyphicon glyphicon-remove'></span>
+									</a>";
+							}
+						?>
 					</td>
 				</tr>
 				<?php
@@ -84,13 +107,20 @@ require_once '../Manager/DbManager.php';
 	$(document).ready(function(){
 		
 		$('.eattendance_id').click(function(){
-			$id = $(this).attr('name');
-			window.location = '../Pages/Checker.php?id=' + $id
+			var id = $(this).attr('name');
+			window.location = '../Pages/Checker.php?id=' + id
 		});
 
 		$('.vattendance_id').click(function(){
-			$id = $(this).attr('name');
-			window.location = '../Pages/Attendance.php?id=' + $id
+			var id = $(this).attr('name');
+			window.location = '../Pages/Attendance.php?id=' + id
+		});
+
+		$('.rattendance_id').click(function(){
+			var id = $(this).attr('name');
+			$('.remove_id').click(function(){
+				window.location = '../Utils/DeleteTitle.php?id=' + id;
+			});
 		});
 
 	});
