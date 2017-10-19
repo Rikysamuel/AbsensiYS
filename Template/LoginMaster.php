@@ -9,6 +9,7 @@
 	<head>
 		<title>Pengabsenan Jemaat</title>
 		<meta charset = "utf-8" />
+		<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 		<meta name = "viewport" content = "width=device-width, initial-scale=1" />
 		<link rel = "stylesheet" type = "text/css" href = "../html/css/bootstrap.css" />
 		<link rel = "stylesheet" type = "text/css" href = "../html/css/style.css" />

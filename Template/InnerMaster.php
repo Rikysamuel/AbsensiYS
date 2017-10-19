@@ -17,6 +17,7 @@
 		<title>Pengabsenan Jemaat</title>
 		<meta charset = "utf-8" />
 		<meta name = "viewport" content = "width=device-width, initial-scale=1" />
+		<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 		<link rel = "stylesheet" href = "../html/css/bootstrap.css" />
 		<link rel = "stylesheet" href = "../html/css/jquery.dataTables.css" />
 		<!-- Loaded at the top because got some widgets that require javascripts to be loaded first -->
