@@ -20,6 +20,11 @@
 		<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 		<link rel = "stylesheet" href = "../html/css/bootstrap.css" />
 		<link rel = "stylesheet" href = "../html/css/jquery.dataTables.css" />
+		<style>
+			.well {
+				overflow: auto;
+			}
+		</style>
 		<!-- Loaded at the top because got some widgets that require javascripts to be loaded first -->
 		<script src = "../html/js/jquery.js"></script>
 		<script src = "../html/js/bootstrap.js"></script>

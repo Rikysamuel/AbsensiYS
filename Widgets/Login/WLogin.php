@@ -4,7 +4,7 @@
 	<div class = "col-lg-4 col-centered">
 		<div class = "panel panel-primary">
 			<div class = "panel-heading">
-				<h4>Admin Login</h4>
+				<h4>Login</h4>
 			</div>
 			<div class = "panel-body">
 				<form enctype = "multipart/form-data">
