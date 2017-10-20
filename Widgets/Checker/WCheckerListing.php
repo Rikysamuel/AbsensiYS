@@ -106,19 +106,19 @@
 <script type = "text/javascript">
 	$(document).ready(function(){
 		
-		$('.eattendance_id').click(function(){
+		$(document).on("click", ".eattendance_id", function () {
 			var id = $(this).attr('name');
 			window.location = '../Pages/Checker.php?id=' + id
 		});
 
-		$('.vattendance_id').click(function(){
+		$(document).on("click", ".vattendance_id", function () {
 			var id = $(this).attr('name');
 			window.location = '../Pages/Attendance.php?id=' + id
 		});
 
-		$('.rattendance_id').click(function(){
+		$(document).on("click", ".rattendance_id", function () {
 			var id = $(this).attr('name');
-			$('.remove_id').click(function(){
+			$(document).on("click", ".remove_id", function () {
 				window.location = '../Utils/DeleteTitle.php?id=' + id;
 			});
 		});

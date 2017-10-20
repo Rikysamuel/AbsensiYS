@@ -5,8 +5,6 @@
 	}
 ?>
 
-<link rel="stylesheet" href="../html/css/jquery-ui.min.css">
-
 <div class = "container-fluid">
 	<br />
 	<br />
@@ -42,15 +40,15 @@
 	</div>
 </div>
 
-<script src = "../html/js/jquery-ui.min.js"></script>
 <script>
 	 var nameListLabel = [ ];
 	 var nameListValue = { };
 	<?php
 		$ret = Select("jemaat");
 		if (count($ret) > 0) {
+			// full name
 			for ($i = 0; $i < count($ret); $i++) {
-				echo "nameListLabel.push('".$ret[$i]['firstname']." ".$ret[$i]['lastname']."');";
+				echo "nameListLabel.push('".$ret[$i]['nama_lengkap']." (".$ret[$i]['nama_panggilan'].")');";
 				echo "nameListValue[nameListLabel[".$i."]] = ".$ret[$i]['jemaat_id'].";";
 			}
 		}

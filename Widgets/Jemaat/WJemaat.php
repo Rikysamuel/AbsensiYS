@@ -13,28 +13,79 @@ require_once '../Manager/DbManager.php';
 			<form method = "POST" action = "../Utils/CreateJemaat.php" enctype = "multipart/form-data">
 				<div class  = "modal-body">
 					<div class = "form-group">
-						<label>Nama Panggilan Jemaat:</label>
-						<input type = "text" name = "jemaat_panggilan" required = "required" class = "form-control" />
+						<label>Full Name:</label>
+						<input type = "text" name = "fullname" required = "required" class = "form-control" />
 					</div>
 					<div class = "form-group">
-						<label>Firstname:</label>
-						<input type = "text" name = "firstname" required = "required" class = "form-control" />
+						<label>Nick Name:</label>
+						<input type = "text" name = "nick_name" placeholder="(Optional)" class = "form-control" />
 					</div>
 					<div class = "form-group">
-						<label>Middlename:</label>
-						<input type = "text" name = "middlename" placeholder = "(Optional)" class = "form-control" />
+						<label>Blood Type:</label>
+						<select class="form-control" name="blodType">
+							<option value="A" selected="selected">A</option>
+							<option value="B">B</option>
+							<option value="O">O</option>
+							<option value="AB">AB</option>
+						</select>
 					</div>
 					<div class = "form-group">
-						<label>Lastname:</label>
-						<input type = "text" name = "lastname" required = "required" class = "form-control" />
+						<label>Hobby:</label>
+						<input type = "text" name = "hobby" placeholder = "(Optional)" class = "form-control" />
 					</div>
 					<div class = "form-group">
-						<label>Baptis:</label>
-						<input type = "text" name = "baptis" required = "required" class = "form-control" />
+						<label>Address:</label>
+						<input type = "text" name = "address" required = "required" class = "form-control" />
+					</div>
+					<div class = "form-group">
+						<label>Birth Place:</label>
+						<input type = "text" name = "birth_place" required = "required" class = "form-control" />
+					</div>
+					<div class = "form-group">
+						<label>Birth Date:</label>
+						<input type = "text" id = "birth_date" name = "birth_date" placeholder = "(e.g: 1994-07-26)" required = "required" class = "form-control" />
+					</div>
+					<div class = "form-group">
+						<label>Status:</label>
+						<input type = "text" name = "status" required = "required" class = "form-control" />
+					</div>
+					<div class = "form-group">
+						<label>Phone No:</label>
+						<input type = "text" name = "phone" required = "required" class = "form-control" />
+					</div>
+					<div class = "form-group">
+						<label>Line ID:</label>
+						<input type = "text" name = "line" placeholder="(Optional)" class = "form-control" />
+					</div>
+					<div class = "form-group">
+						<label>Instagram Username:</label>
+						<input type = "text" name = "insta" placeholder="(Optional)" class = "form-control" />
+					</div>
+					<div class = "form-group">
+						<label>Family Contact:</label>
+						<input type = "text" name = "fam_phone" placeholder="(Optional)" class = "form-control" />
+					</div>
+					<div class = "form-group">
+						<label>Baptism:</label>
+						<select class="form-control" name="baptism">
+							<option value="1">Yes</option>
+							<option value="0" selected="selected">No</option>
+						</select>
+					</div>
+					<div class = "form-group">
+						<label>Service:</label>
+						<input type = "text" name = "service" placeholder="(Optional)" class = "form-control" />
+					</div>
+					<div class = "form-group">
+						<label>PA:</label>
+						<select class="form-control" name="PA">
+							<option value="1">Yes</option>
+							<option value="0" selected="selected">No</option>
+						</select>
 					</div>
 					<div class = "form-group">
 						<label>Komsel:</label>
-						<input type = "text" name = "komsel" required = "required" class = "form-control" />
+						<input type = "text" name = "komsel" placeholder="(Optional)" class = "form-control" />
 					</div>
 				</div>
 				<div class = "modal-footer">
@@ -73,11 +124,21 @@ require_once '../Manager/DbManager.php';
 	<table id = "table" class = "table table-bordered">
 		<thead class = "alert-info">
 			<tr>
-				<th>Panggilan</th>
-				<th>Firstname</th>
-				<th>Middlename</th>
-				<th>Lastname</th>
-				<th>Baptis</th>
+				<th>Full Name</th>
+				<th>Nick Name</th>
+				<th>Blood Type</th>
+				<th>Hobby</th>
+				<th>Addresss</th>
+				<th>Birth Place</th>
+				<th>Birth Date</th>
+				<th>Status</th>
+				<th>Phone No</th>
+				<th>Line ID</th>
+				<th>Instagram</th>
+				<th>Family Contact</th>
+				<th>Baptism</th>
+				<th>Service</th>
+				<th>PA</th>
 				<th>Komsel</th>
 				<th>Action</th>
 			</tr>
@@ -89,13 +150,30 @@ require_once '../Manager/DbManager.php';
 					foreach($result as &$res){
 				?>
 				<tr>
-					<td><?php echo $res['jemaat_panggilan']?></td>
-					<td><?php echo $res['firstname']?></td>
-					<td><?php echo $res['middlename']?></td>
-					<td><?php echo $res['lastname']?></td>
-					<td><?php echo $res['baptis']?></td>
-					<td><?php echo $res['komsel']?></td>
-					<td><a class = "btn btn-danger rjemaat_id" name = "<?php echo $res['jemaat_id']?>" href = "#" data-toggle = "modal" data-target = "#delete"><span class = "glyphicon glyphicon-remove"></span></a> <a class = "btn btn-warning  ejemaat_id" name = "<?php echo $res['jemaat_id']?>" href = "#" data-toggle = "modal" data-target = "#edit_jemaat"><span class = "glyphicon glyphicon-edit"></span></a></td>
+					<td> <?php echo $res['nama_lengkap']; ?> </td>
+					<td> <?php echo $res['nama_panggilan']; ?> </td>
+					<td> <?php echo $res['golongan_darah']; ?> </td>
+					<td> <?php echo $res['hobi']; ?> </td>
+					<td> <?php echo $res['alamat']; ?> </td>
+					<td> <?php echo $res['tempat_lahir']; ?> </td>
+					<td> <?php echo date("d M Y", strtotime($res['tanggal_lahir'])); ?> </td>
+					<td> <?php echo $res['status']; ?> </td>
+					<td> <?php echo $res['nomor_telepon']; ?> </td>
+					<td> <?php echo $res['ID_line']; ?> </td>
+					<td> <?php echo $res['instagram']; ?> </td>
+					<td> <?php echo $res['kontak_keluarga']; ?> </td>
+					<td> <?php echo ($res['baptisan_air'] == 1) ? "Yes" : "No"; ?> </td>
+					<td> <?php echo $res['pelayanan']; ?> </td>
+					<td> <?php echo ($res['PA'] == 1) ? "Yes" : "No"; ?> </td>
+					<td> <?php echo $res['komsel']; ?> </td>
+					<td>
+						<a class = "btn btn-danger rjemaat_id" name = "<?php echo $res['jemaat_id']?>" href = "#" data-toggle = "modal" data-target = "#delete">
+							<span class = "glyphicon glyphicon-remove" ></span>
+						</a>
+						<a class = "btn btn-warning  ejemaat_id" name = "<?php echo $res['jemaat_id']?>" href = "#" data-toggle = "modal" data-target = "#edit_jemaat">
+							<span class = "glyphicon glyphicon-edit"></span>
+						</a>
+					</td>
 				</tr>
 				<?php
 			}
@@ -112,19 +190,25 @@ require_once '../Manager/DbManager.php';
 <script type = "text/javascript">
 	$(document).ready(function(){
 		$('#table').DataTable();
+		$('#birth_date').datepicker({
+			dateFormat: 'yy-mm-dd'
+		});
 	});
 </script>
 <script type = "text/javascript">
 	$(document).ready(function(){
-		$('.rjemaat_id').click(function(){
+
+		$(document).on("click", ".rjemaat_id", function () {
 			$jemaat_id = $(this).attr('name');
-			$('.remove_id').click(function(){
+			$(document).on("click", ".remove_id", function () {
 				window.location = '../Utils/DeleteJemaat.php?jemaat_id=' + $jemaat_id;
 			});
 		});
-		$('.ejemaat_id').click(function(){
+
+		$(document).on("click", ".ejemaat_id", function () {
 			$jemaat_id = $(this).attr('name');
 			$('#edit_query').load('../Widgets/Jemaat/WJemaatEdit.php?jemaat_id=' + $jemaat_id);
 		});
+
 	});
 </script>

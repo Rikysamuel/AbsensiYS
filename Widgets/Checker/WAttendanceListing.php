@@ -51,7 +51,7 @@
 					<td><?php 
 							$jemaat_id = $res["jemaat_id"];
 							$jemaat = Select("jemaat", "jemaat_id='$jemaat_id'");
-							echo $jemaat[0]["firstname"]." ".$jemaat[0]["middlename"]." ".$jemaat[0]["lastname"];
+							echo $jemaat[0]["nama_lengkap"];
 						?>
 					</td>
 					<td><?php 
@@ -84,14 +84,14 @@
 <script type = "text/javascript">
 	$(document).ready(function(){
 		
-		$('.rattendance_id').click(function(){
+		$(document).on("click", ".rattendance_id", function () {
 			var id = $(this).attr('name');
 			$('.remove_id').click(function(){
 				window.location = '../Utils/DeleteAttendance.php?attendance_id=' + id;
 			});
 		});
 
-		$('.add_jemaat').click(function(){
+		$(document).on("click", ".add_jemaat", function () {
 			window.location = '../Pages/Checker.php?id=' + <?php echo $id ?>
 		});
 

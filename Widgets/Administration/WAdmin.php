@@ -1,5 +1,10 @@
 <?php
-require_once '../Manager/DbManager.php';
+	require_once '../Manager/DbManager.php';
+
+	if (session_status() == PHP_SESSION_NONE) {
+	    session_start();
+	}
+
 ?>
 
 <div class = "modal fade" id = "myModal" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
@@ -91,12 +96,24 @@ require_once '../Manager/DbManager.php';
 				<td><?php echo $res['last_login']?></td>
 				<td><?php echo $res['is_locked_out']?></td>
 				<td>
-					<a class = "btn btn-danger radmin_id" name = "<?php echo $res['admin_id']?>" href = "#" data-toggle = "modal" data-target = "#delete">
-						<span class = "glyphicon glyphicon-remove"></span>
-					</a> 
-					<a class = "btn btn-warning  eadmin_id" name = "<?php echo $res['admin_id']?>" href = "#" data-toggle = "modal" data-target = "#edit_admin">
-						<span class = "glyphicon glyphicon-edit"></span>
-					</a>
+					<?php
+						$user = $_SESSION["username"];
+						if ($user != $res['username']) {
+							echo "<a class = 'btn btn-danger radmin_id' name = '".$res['admin_id']."' href = '#'' data-toggle = 'modal' data-target = '#delete'>
+									<span class = 'glyphicon glyphicon-remove'></span>
+								</a> 
+								<a class = 'btn btn-warning  eadmin_id' name = '".$res['admin_id']."' href = '#' data-toggle = 'modal' data-target = '#edit_admin'>
+									<span class = 'glyphicon glyphicon-edit'></span>
+								</a>";
+						} else {
+							echo "<a class = 'btn btn-danger' href = '#' disabled>
+									<span class = 'glyphicon glyphicon-remove'></span>
+								</a> 
+								<a class = 'btn btn-warning ' href = '#' disabled>
+									<span class = 'glyphicon glyphicon-edit'></span>
+								</a>";
+						}
+					?>
 				</td>
 			</tr>
 			<?php
@@ -118,15 +135,18 @@ require_once '../Manager/DbManager.php';
 </script>
 <script type = "text/javascript">
 	$(document).ready(function(){
-		$('.radmin_id').click(function(){
+
+		$(document).on("click", ".radmin_id", function () {
 			$admin_id = $(this).attr('name');
-			$('.remove_id').click(function(){
+			$(document).on("click", ".remove_id", function () {
 				window.location = '../Utils/DeleteAdmin.php?admin_id=' + $admin_id;
 			});
 		});
-		$('.eadmin_id').click(function(){
+
+		$(document).on("click", ".eadmin_id", function () {
 			$admin_id = $(this).attr('name');
 			$('#edit_query').load('../Widgets/Administration/WAdminEdit.php?admin_id=' + $admin_id);
 		});
+
 	});
 </script>

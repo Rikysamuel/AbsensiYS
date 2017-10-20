@@ -11,6 +11,8 @@
 	$pass = $salt[0].$pass.$salt[1];
 	$pass = hash("sha256", $pass);
 
+	$user = str_replace(" ", "_", $user);
+
 	$ret = Select("admin", "username='$user'");
 	if (count($ret) > 0 && $ret[0]['admin_id'] != $id) {
 		echo '

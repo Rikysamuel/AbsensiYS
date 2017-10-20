@@ -20,6 +20,7 @@
 		<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 		<link rel = "stylesheet" href = "../html/css/bootstrap.css" />
 		<link rel = "stylesheet" href = "../html/css/jquery.dataTables.css" />
+		<link rel="stylesheet" href="../html/css/jquery-ui.min.css">
 		<style>
 			.well {
 				overflow: auto;
@@ -28,6 +29,7 @@
 		<!-- Loaded at the top because got some widgets that require javascripts to be loaded first -->
 		<script src = "../html/js/jquery.js"></script>
 		<script src = "../html/js/bootstrap.js"></script>
+		<script src = "../html/js/jquery-ui.min.js"></script>
 	</head>
 	<body>
 		<!-- header -->
