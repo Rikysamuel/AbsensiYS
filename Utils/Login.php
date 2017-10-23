@@ -18,6 +18,9 @@
 				$_SESSION['login_role'] = $ret[0]['role'];
 
 				$ret = Update("admin", "login_attempt", "0", "username='$user'");
+				if ($ret != "OK") {
+					echo $ret;
+				}
 			}
 		}
 	} else {
