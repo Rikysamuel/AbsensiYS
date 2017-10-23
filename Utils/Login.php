@@ -4,6 +4,7 @@
 	$user = escape($_POST['username']);
 	$pass = escape($_POST['password']);
 	$ret = Select("admin", "username = '$user'");
+	echo $ret;
 
 	$salt = GetSalt();
 	$pass = $salt[0].$pass.$salt[1];
