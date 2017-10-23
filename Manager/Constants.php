@@ -1,8 +1,10 @@
 <?php
-	$server = "localhost";
-	$database = "db_sars";
-	$username = "root";
-	$password = "";
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+	$server = $url["host"];
+	$database = substr($url["path"], 1);
+	$username = $url["user"];
+	$password = $url["pass"];
 
 	$maxLoginAttempt = 6;
 
