@@ -19,7 +19,7 @@
 		<li class = "dropdown pull-right">
 			<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"><i class = "glyphicon glyphicon-user"></i> <?php echo $_SESSION['username'] ?> <b class = "caret"></b></a>
 			<ul class = "dropdown-menu">
-				<li><a href = "..\Utils\logout.php"><i class = "glyphicon glyphicon-off"></i> Logout</a></li>
+				<li><a href = "../Utils/logout.php"><i class = "glyphicon glyphicon-off"></i> Logout</a></li>
 			</ul>
 		</li>
 	</ul>
