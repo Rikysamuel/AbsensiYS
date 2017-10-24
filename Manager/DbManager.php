@@ -1,14 +1,12 @@
 <?php
-	include $_SERVER["DOCUMENT_ROOT"].'/Manager/Constants.php';
+	include $_SERVER["DOCUMENT_ROOT"].'/app/Manager/Constants.php';
 
 	function Select() {
-		echo "tes 1";
 		global $server, $username, $password, $database;
 		$conn = pg_connect("$server $database $username $password");
 		if (!$conn) {
 			return "Error : Unable to open database\n";
 		}
-		echo "tes 2";
 
 		if (func_num_args() == 1) { // $table
 			$sql = "SELECT * FROM ".func_get_arg(0);
