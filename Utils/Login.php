@@ -9,8 +9,9 @@
 	$pass = $salt[0].$pass.$salt[1];
 	$pass = hash("sha256", $pass);
 
-	if ($ret[0]['is_locked_out'] == 'f') {
-		if(count($ret) > 0){
+	if(count($ret) > 0){
+		if ($ret[0]['is_locked_out'] == 'f') {
+		
 			if ($pass == $ret[0]['password']) {
 				echo 'success';
 				session_start();
@@ -22,7 +23,7 @@
 					echo $ret;
 				}
 			}
+		} else {
+			echo 'locked';
 		}
-	} else {
-		echo 'locked';
-	}
+	} 
