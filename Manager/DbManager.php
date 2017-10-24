@@ -1,5 +1,5 @@
 <?php
-	include $_SERVER["DOCUMENT_ROOT"].'/Manager/Constants.php';
+	include 'ConstantLinker.php';
 
 	function Select() {
 		global $server, $username, $password, $database;

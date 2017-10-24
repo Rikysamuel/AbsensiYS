@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	var error_result = $('<center><label class = "text-danger">Invalid username or password</label></center>');
 	var error_result2 = $('<center><label class = "text-danger">Please complete the required field</label></center>');
-	var error_result_locked = $('<center><label class = "text-danger">Your account has been locked due to maximum login attempt.<br /> Please contact your administator.</label></center>');
+	var error_result_locked = $('<center><label class = "text-danger">Your account has been locked.<br /> Please contact your administator.</label></center>');
 	var loading = $('<center><img src = "../html/images/499.gif" height = "15px" /></center>');
 	$('#login_admin').click(function(){
 		error_result.remove();

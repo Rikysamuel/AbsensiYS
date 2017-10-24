@@ -7,6 +7,8 @@
 
 ?>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 <div class = "modal fade" id = "myModal" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
 	<div class = "modal-dialog" role = "document">
 		<div class = "modal-content panel-primary">
@@ -53,9 +55,31 @@
 	<div class = "modal-dialog" role = "document">
 		<div class = "modal-content ">
 			<div class = "modal-body">
-				<center><label class = "text-danger">Are you sure you want to delete this record?</label></center>
+				<center><label class = "text-danger">Are you sure you want to delete this account?</label></center>
 				<br />
 				<center><a class = "btn btn-danger remove_id" ><span class = "glyphicon glyphicon-trash"></span> Yes</a> <button type = "button" class = "btn btn-warning" data-dismiss = "modal" aria-label = "No"><span class = "glyphicon glyphicon-remove"></span> No</button></center>
+			</div>
+		</div>
+	</div>
+</div>
+<div class = "modal fade" id = "lock" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
+	<div class = "modal-dialog" role = "document">
+		<div class = "modal-content ">
+			<div class = "modal-body">
+				<center><label class = "text-danger">Are you sure you want to lock this account?</label></center>
+				<br />
+				<center><a class = "btn btn-warning lock_id" ><span class = "glyphicon glyphicon-lock"></span> Yes</a> <button type = "button" class = "btn btn-warning" data-dismiss = "modal" aria-label = "No"><span class = "glyphicon glyphicon-remove"></span> No</button></center>
+			</div>
+		</div>
+	</div>
+</div>
+<div class = "modal fade" id = "unlock" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
+	<div class = "modal-dialog" role = "document">
+		<div class = "modal-content ">
+			<div class = "modal-body">
+				<center><label class = "text-danger">Are you sure you want to unlock this account?</label></center>
+				<br />
+				<center><a class = "btn btn-warning unlock_id" ><i class='fa fa-unlock'></i> Yes</a> <button type = "button" class = "btn btn-warning" data-dismiss = "modal" aria-label = "No"><span class = "glyphicon glyphicon-remove"></span> No</button></center>
 			</div>
 		</div>
 	</div>
@@ -104,6 +128,12 @@
 								</a> 
 								<a class = 'btn btn-warning  eadmin_id' name = '".$res['admin_id']."' href = '#' data-toggle = 'modal' data-target = '#edit_admin'>
 									<span class = 'glyphicon glyphicon-edit'></span>
+								</a>
+								<a class = 'btn btn-warning ladmin_id' name='".$res['admin_id']."' href = '#' data-toggle = 'modal' data-target = '#lock'>
+									<span class = 'glyphicon glyphicon-lock'></span>
+								</a>
+								<a class = 'btn btn-warning uadmin_id' name='".$res['admin_id']."' href = '#' data-toggle = 'modal' data-target = '#unlock'>
+									<i class='fa fa-unlock'></i>  
 								</a>";
 						} else {
 							echo "<a class = 'btn btn-danger' href = '#' disabled>
@@ -111,6 +141,12 @@
 								</a> 
 								<a class = 'btn btn-warning ' href = '#' disabled>
 									<span class = 'glyphicon glyphicon-edit'></span>
+								</a>
+								<a class = 'btn btn-warning ' href = '#' disabled>
+									<span class = 'glyphicon glyphicon-lock'></span>
+								</a>
+								<a class = 'btn btn-warning ' href = '#' disabled>
+									<i class='fa fa-unlock'></i>  
 								</a>";
 						}
 					?>
@@ -146,6 +182,20 @@
 		$(document).on("click", ".eadmin_id", function () {
 			$admin_id = $(this).attr('name');
 			$('#edit_query').load('../Widgets/Administration/WAdminEdit.php?admin_id=' + $admin_id);
+		});
+
+		$(document).on("click", ".ladmin_id", function () {
+			$admin_id = $(this).attr('name');
+			$(document).on("click", ".lock_id", function () {
+				window.location = '../Utils/LockAdmin.php?admin_id=' + $admin_id;
+			});
+		});
+
+		$(document).on("click", ".uadmin_id", function () {
+			$admin_id = $(this).attr('name');
+			$(document).on("click", ".unlock_id", function () {
+				window.location = '../Utils/UnlockAdmin.php?admin_id=' + $admin_id;
+			});
 		});
 
 	});
