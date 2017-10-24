@@ -44,8 +44,8 @@
 		<tbody>
 			<?php
 				$result = Select("attendance", "title_id='$id'");
-				if (count($result) > 0) {
-					foreach($result as &$res){
+				if ($result) {
+					foreach((array) $result as &$res){
 				?>
 				<tr>
 					<td><?php 

@@ -13,16 +13,16 @@
 
 		$user = str_replace(" ", "_", $user);
 		$result = Select("admin", "username='$user'");
-		if (count($result) > 0) {
+		if (count($result[0]) > 0) {
 			echo '
 				<script type = "text/javascript">
 					alert("Username already taken");
-					window.location = "../Pages/Dashboard.php";
+					window.location = "../Pages/Admin.php";
 				</script>
 			';
 		} else {
-			$ret = Insert("admin", "('', '$role', '$user', '$pass', '$email', 0, NULL, 0)");
-			if ($ret == "OK") {
+			$ret = Insert("admin", "(DEFAULT, '$role', '$user', '$pass', '$email', 0, NULL, FALSE)");
+			if ($ret == "") {
 				echo '
 					<script type = "text/javascript">
 						window.location = "../Pages/Admin.php";

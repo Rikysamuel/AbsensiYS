@@ -52,7 +52,7 @@
 			return;
 		}
 
-		$ret = Insert("jemaat", "('', '$fullname','$nick_name', '$blodType', '$hobby', '$address', '$birth_place', '$birth_date', '$status', '$phone', '$line', '$insta', '$fam_phone', '$baptism', '$service', '$PA', '$komsel')");
+		$ret = Insert("jemaat", "(DEFAULT, '$fullname','$nick_name', '$blodType', '$hobby', '$address', '$birth_place', '$birth_date', '$status', '$phone', '$line', '$insta', '$fam_phone', '$baptism', '$service', '$PA', '$komsel')");
 		echo '
 			<script type = "text/javascript">
 				window.location = "../Pages/Jemaat.php";

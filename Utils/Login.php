@@ -9,7 +9,7 @@
 	$pass = $salt[0].$pass.$salt[1];
 	$pass = hash("sha256", $pass);
 
-	if (!$ret[0]["is_locked_out"]) {
+	if ($ret[0]['is_locked_out'] == 'f') {
 		if(count($ret) > 0){
 			if ($pass == $ret[0]['password']) {
 				echo 'success';
@@ -18,7 +18,7 @@
 				$_SESSION['login_role'] = $ret[0]['role'];
 
 				$ret = Update("admin", "login_attempt", "0", "username='$user'");
-				if ($ret != "OK") {
+				if (!$ret) {
 					echo $ret;
 				}
 			}

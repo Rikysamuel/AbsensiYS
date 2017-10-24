@@ -159,12 +159,12 @@ require_once '../Manager/DbManager.php';
 					<td> <?php echo date("d M Y", strtotime($res['tanggal_lahir'])); ?> </td>
 					<td> <?php echo $res['status']; ?> </td>
 					<td> <?php echo $res['nomor_telepon']; ?> </td>
-					<td> <?php echo $res['ID_line']; ?> </td>
+					<td> <?php echo $res['id_line']; ?> </td>
 					<td> <?php echo $res['instagram']; ?> </td>
 					<td> <?php echo $res['kontak_keluarga']; ?> </td>
-					<td> <?php echo ($res['baptisan_air'] == 1) ? "Yes" : "No"; ?> </td>
+					<td> <?php echo ($res['baptisan_air'] == "t") ? "Yes" : "No"; ?> </td>
 					<td> <?php echo $res['pelayanan']; ?> </td>
-					<td> <?php echo ($res['PA'] == 1) ? "Yes" : "No"; ?> </td>
+					<td> <?php echo ($res['pa'] == "t") ? "Yes" : "No"; ?> </td>
 					<td> <?php echo $res['komsel']; ?> </td>
 					<td>
 						<a class = "btn btn-danger rjemaat_id" name = "<?php echo $res['jemaat_id']?>" href = "#" data-toggle = "modal" data-target = "#delete">

@@ -2,7 +2,7 @@
 <?php
 	session_start();
 	if(ISSET($_SESSION['username'])){
-		header('location: ../Pages/Dashboard.php');
+		header('location: ..\Pages\AttendanceListing.php');
 	}
 ?>
 <html lang = "eng">

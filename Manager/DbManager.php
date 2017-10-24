@@ -3,39 +3,54 @@
 
 	function Select() {
 		global $server, $username, $password, $database;
-		$conn = new mysqli($server, $username, $password, $database) or die(mysqli_error());
-		$results_array = array();
+		$conn = pg_connect("$server $database $username $password");
+		if (!$conn) {
+			return "Error : Unable to open database\n";
+		}
 
 		if (func_num_args() == 1) { // $table
 			$sql = "SELECT * FROM ".func_get_arg(0);
-			$result = $conn->query($sql) or die(mysqli_error());
-			while ($row = $result->fetch_assoc()) {
-				$results_array[] = $row;
+			$ret = pg_query($conn, $sql);
+
+			if(!$ret) {
+				echo pg_last_error($conn);
+				exit;
 			}
+
+			pg_close($conn);
+			return pg_fetch_all($ret);
 		}
 
 		if (func_num_args() == 2) { // $table, $condition
 			$sql = "SELECT * FROM ".func_get_arg(0)." WHERE ".func_get_arg(1);
-			$result = $conn->query($sql) or die(mysqli_error());
-			while ($row = $result->fetch_assoc()) {
-				$results_array[] = $row;
+			$ret = pg_query($conn, $sql);
+
+			if(!$ret) {
+				echo pg_last_error($conn);
+				exit;
 			}
+
+			pg_close($conn);
+			return pg_fetch_all($ret);
 		}
 
 		if (func_num_args() == 3) { // $table, $condition, $return_column
 			$sql = "SELECT ".func_get_arg(2)." FROM ".func_get_arg(0)." WHERE ".func_get_arg(1);
-			$result = $conn->query($sql) or die(mysqli_error());
-			while ($row = $result->fetch_assoc()) {
-				$results_array[] = $row;
-			}
-		}
+			$ret = pg_query($conn, $sql);
 
-		return $results_array;
+			if(!$ret) {
+				echo pg_last_error($conn);
+				exit;
+			}
+
+			pg_close($conn);
+			return pg_fetch_all($ret);
+		}
 	}
 
 	function Update() {
 		global $server, $username, $password, $database;
-		$conn = new mysqli($server, $username, $password, $database) or die(mysqli_error());
+		$conn = pg_connect("$server $database $username $password");
 		$sql = "";
 
 		if (func_num_args() == 3){ // $table, $multiple_values, $condition
@@ -46,37 +61,44 @@
 			$sql = "UPDATE ".func_get_arg(0)." SET ".func_get_arg(1)."='".func_get_arg(2)."' WHERE ".func_get_arg(3);
 		}
 
-		if ($conn->query($sql) === TRUE) {
-		    return "OK";
-		} else {
-		    return "Error updating record: " . $conn->error;
+		$ret = pg_query($conn, $sql);
+
+		if(!$ret) {
+			echo pg_last_error($conn);
+			exit;
 		}
+
+		pg_close($conn);
 	}
 
 	function Insert($table, $values) {
 		global $server, $username, $password, $database;
-		$conn = new mysqli($server, $username, $password, $database) or die(mysqli_error());
+		$conn = pg_connect("$server $database $username $password");
 
 		$sql = "INSERT INTO $table VALUES $values";
 
-		if ($conn->query($sql) === TRUE) {
-			return "OK";
-		} else {
-			return "Error inserting record: " . $conn->error;
+		$ret = pg_query($conn, $sql);
+		if(!$ret) {
+			echo pg_last_error($conn);
+			exit;
 		}
+
+		pg_close($conn);
 	}
 
 	function Delete($table, $condition) {
 		global $server, $username, $password, $database;
-		$conn = new mysqli($server, $username, $password, $database) or die(mysqli_error());
+		$conn = pg_connect("$server $database $username $password");
 
 		$sql = "DELETE FROM $table WHERE $condition";
 		
-		if ($conn->query($sql) === TRUE) {
-			return "OK";
-		} else {
-			return "Error deleting record: " . $conn->error;
+		$ret = pg_query($conn, $sql);
+		if(!$ret) {
+			echo pg_last_error($conn);
+			exit;
 		}
+
+		pg_close($conn);
 	}
 
 	function escape($value)

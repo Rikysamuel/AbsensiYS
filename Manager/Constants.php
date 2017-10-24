@@ -1,10 +1,15 @@
 <?php
-	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$server = "host = 127.0.0.1 port = 5432";
+	$database = "dbname = absensi";
+	$username = "user = postgres";
+	$password = "password = admin";
 
-	$server = $url["host"];
-	$database = substr($url["path"], 1);
-	$username = $url["user"];
-	$password = $url["pass"];
+	// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+	// $server = $url["host"];
+	// $database = substr($url["path"], 1);
+	// $username = $url["user"];
+	// $password = $url["pass"];
 
 	$maxLoginAttempt = 6;
 

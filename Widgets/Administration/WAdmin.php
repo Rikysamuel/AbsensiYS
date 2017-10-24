@@ -94,7 +94,7 @@
 			<tr>
 				<td><?php echo $res['username']?></td>
 				<td><?php echo $res['last_login']?></td>
-				<td><?php echo $res['is_locked_out']?></td>
+				<td><?php echo ($res['is_locked_out'] == "t") ? "True" : "False"?></td>
 				<td>
 					<?php
 						$user = $_SESSION["username"];
