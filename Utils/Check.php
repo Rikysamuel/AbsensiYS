@@ -1,5 +1,5 @@
 <?php
-	require_once '..\Manager\DbManager.php';
+	require_once '../Manager/DbManager.php';
 	
 	$id = escape($_POST['id']);
 	$title = escape($_POST['title']);

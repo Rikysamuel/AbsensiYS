@@ -1,4 +1,4 @@
 <?php
 	session_start();
 	session_unset('admin_id');
-	header('location: ..\home.php');
+	header('location: ../home.php');
