@@ -1,5 +1,5 @@
 <?php
-	require_once '..\Manager\DbManager.php';
+	require_once '../Manager/DbManager.php';
 	
 	$user = escape($_POST['username']);
 	$pass = escape($_POST['password']);
