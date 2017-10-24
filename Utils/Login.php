@@ -9,6 +9,9 @@
 	$pass = $salt[0].$pass.$salt[1];
 	$pass = hash("sha256", $pass);
 
+	echo $ret."\n";
+	print_r($ret);
+
 	if ($ret[0]['is_locked_out'] == 'f') {
 		if(count($ret) > 0){
 			if ($pass == $ret[0]['password']) {
