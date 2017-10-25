@@ -2,7 +2,7 @@
 
 	$hostname = $_SERVER['HTTP_HOST'];
 	if (strpos($hostname, 'localhost') !== false) {
-		include 'ConstantLinker.LOCAL.php';
+		include 'Constant.LOCAL.php';
 	} else {
-		include 'ConstantLinker.WEB.php';
+		include 'Constant.WEB.php';
 	}
