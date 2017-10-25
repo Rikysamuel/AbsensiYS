@@ -3,6 +3,10 @@
 
 	if (session_status() == PHP_SESSION_NONE) {
 	    session_start();
+
+	    if ($_SESSION['login_role'] == '2') {
+	    	header('location: ../home.php');
+	    }
 	}
 
 ?>
