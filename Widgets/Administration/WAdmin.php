@@ -108,6 +108,7 @@
 		<thead>
 			<tr class = "alert-info">
 				<th>Username</th>
+				<th>Role</th>
 				<th>Last Login Time</th>
 				<th>Is Locked Out</th>
 				<th>Action</th>
@@ -121,6 +122,13 @@
 			?>
 			<tr>
 				<td><?php echo $res['username']?></td>
+				<td>
+					<?php
+						$roleId = $res['role'];
+						$role = (array) Select("admin_roles", "id = '$roleId'");
+						echo $role[0]['Role'];
+					?>
+				</td>
 				<td><?php echo $res['last_login']?></td>
 				<td><?php echo ($res['is_locked_out'] == "t") ? "True" : "False"?></td>
 				<td>
