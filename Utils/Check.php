@@ -8,7 +8,7 @@
 
 	if ($check) {
 		
-		$ret = Select("attendance", "jemaat_id='$id'");
+		$ret = Select("attendance", "jemaat_id='$id' AND title_id='$title'");
 		if (count($ret[0]) > 0) {
 			echo "duplicate";
 		} else {
