@@ -15,6 +15,7 @@
 			if ($pass == $ret[0]['password']) {
 				echo 'success';
 				session_start();
+				$_SESSION['admin_id'] = $ret[0]['admin_id'];
 				$_SESSION['username'] = $ret[0]['username'];
 				$_SESSION['login_role'] = $ret[0]['role'];
 
