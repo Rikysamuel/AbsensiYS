@@ -1,7 +1,14 @@
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+        $('#login_admin').click();
+    }
+});
+
 $(document).ready(function(){
 	var error_result = $('<center><label class = "text-danger">Invalid username or password</label></center>');
 	var error_result2 = $('<center><label class = "text-danger">Please complete the required field</label></center>');
 	var error_result_locked = $('<center><label class = "text-danger">Your account has been locked.<br /> Please contact your administator.</label></center>');
+	var user_pass_empty = $('<center><label class="text-danger">Username/Password can not be empty</label></center>');
 	var loading = $('<center><img src = "../html/images/499.gif" height = "15px" /></center>');
 	$('#login_admin').click(function(){
 		error_result.remove();
@@ -17,14 +24,21 @@ $(document).ready(function(){
 		});
 		var username = $('#username').val();
 		var password = $('#password').val();
-		password = sha256(password); // hashed 1 time
-		if(username == "" && password == ""){
-			$('#username_warning').addClass('has-feedback has-error');
-			$('<span class = "glyphicon glyphicon-remove form-control-feedback"></span>').appendTo('#username_warning');
-			$('#password_warning').addClass('has-feedback has-error');
-			$('<span class = "glyphicon glyphicon-remove form-control-feedback"></span>').appendTo('#password_warning');
+		
+		if(username == "" || password == ""){
+			if (username == "") {
+				$('#username_warning').addClass('has-feedback has-error');
+				$('<span class = "glyphicon glyphicon-remove form-control-feedback"></span>').appendTo('#username_warning');
+			}
+
+			if (password == "") {
+				$('#password_warning').addClass('has-feedback has-error');
+				$('<span class = "glyphicon glyphicon-remove form-control-feedback"></span>').appendTo('#password_warning');
+			}
+
 			error_result2.appendTo('#result');
 		}else{
+			password = sha256(password); // hashed 1 time
 			loading.fadeIn().appendTo('#result');
 			$(this).attr('disabled', 'disabled');
 			error_result2.remove();
@@ -47,7 +61,7 @@ $(document).ready(function(){
 						}
 					}
 				);
-			}, 3000);	
+			}, 3000);
 		}
 	});
 });

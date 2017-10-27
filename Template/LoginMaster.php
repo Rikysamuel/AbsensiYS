@@ -13,6 +13,8 @@
 		<meta name = "viewport" content = "width=device-width, initial-scale=1" />
 		<link rel = "stylesheet" type = "text/css" href = "../html/css/bootstrap.css" />
 		<link rel = "stylesheet" type = "text/css" href = "../html/css/style.css" />
+
+		<script src = "../html/js/jquery.js"></script>
 	</head>
 	<body>
 
@@ -26,7 +28,6 @@
 			</div>
 		</div>
 	</body>
-	<script src = "../html/js/jquery.js"></script>
 	<script src = "../html/js/bootstrap.js"></script>
 	<script src = "../html/js/sha256.min.js"></script>
 	<script src = "../html/js/login.js"></script>

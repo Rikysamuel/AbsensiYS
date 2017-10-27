@@ -106,6 +106,7 @@
 					</table>
 
 					<br />
+					&nbsp;
 					<button type = "button" class = "btn btn-warning" data-target = "#editData" data-toggle = "modal"><span class = "glyphicon glyphicon-pencil"></span> Edit Data</button>
 				</div>
 			</div>

@@ -12,7 +12,7 @@
 		</div>
 		<div class = "form-group">
 			<label>Password:</label>
-			<input type = "password" maxlength = "22" required = "required" name = "password" class = "form-control" value="<?php echo $ret[0]['password']?>"/>
+			<input type = "password" maxlength = "22" required = "required" name = "password" class = "form-control" value="<?php echo GetDefaultPass() ?>"/>
 		</div>
 		<div class = "form-group">
 			<label>Email:</label>

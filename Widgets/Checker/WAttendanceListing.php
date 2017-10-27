@@ -30,7 +30,7 @@
 
 <div class = "well col-lg-12">
 	<button class = "btn btn-success add_jemaat" type = "button" href = "#" data-toggle = "modal">
-		<span class = "glyphicon glyphicon-plus"></span> Add new </button>
+		<span class = "glyphicon glyphicon-plus"></span> Add Check </button>
 	<br />
 	<br />
 	<table id = "table" class = "table table-bordered">

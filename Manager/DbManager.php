@@ -35,7 +35,14 @@
 		}
 
 		if (func_num_args() == 3) { // $table, $condition, $return_column
-			$sql = "SELECT ".func_get_arg(2)." FROM ".func_get_arg(0)." WHERE ".func_get_arg(1);
+			$sql = "";
+
+			if (func_get_arg(1) == "") {
+				$sql = "SELECT ".func_get_arg(2)." FROM ".func_get_arg(0);
+			} else {
+				$sql = "SELECT ".func_get_arg(2)." FROM ".func_get_arg(0)." WHERE ".func_get_arg(1);
+			}
+
 			$ret = pg_query($conn, $sql);
 
 			if(!$ret) {
@@ -118,4 +125,9 @@
 		global $salt_front, $salt_back;
 		$salt = array($salt_front , $salt_back);
 		return $salt;
+	}
+
+	function GetDefaultPass() {
+		global $default_pass;
+		return $default_pass;
 	}
