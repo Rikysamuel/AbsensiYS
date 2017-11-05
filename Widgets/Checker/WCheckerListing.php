@@ -8,6 +8,28 @@
 
 <div class = "alert alert-info">Attendance Listing</div>
 
+<div class = "modal fade" id = "add_title" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
+	<div class = "modal-dialog" role = "document">
+		<div class = "modal-content panel-primary">
+			<div class = "modal-header panel-heading">
+				<button type = "button" class = "close" data-dismiss = "modal" aria-label = "Close"><span aria-hidden = "true">&times;</span></button>
+				<h4 class = "modal-title" id = "myModallabel">Add Title</h4>
+			</div>
+			<form method = "POST" action = "../Utils/CreateTitle.php" enctype = "multipart/form-data">
+				<div class  = "modal-body">
+					<div class = "form-group">
+						<label>Title:</label>
+						<input type = "text" name = "title" required = "required" class = "form-control" />
+					</div>
+				</div>
+				<div class = "modal-footer">
+					<button  class = "btn btn-primary" name = "save"><span class = "glyphicon glyphicon-save"></span> Save</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 <div class = "modal fade" id = "edit_attendance" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
 	<div class = "modal-dialog" role = "document">
 		<div class = "modal-content panel-warning">
@@ -33,7 +55,7 @@
 </div>
 
 <div class = "well col-lg-12">
-	<button class = "btn btn-success" type = "button" href = "#" data-toggle = "modal" data-target = "#add_jemaat"><span class = "glyphicon glyphicon-plus"></span> Add new </button>
+	<button class = "btn btn-success" type = "button" href = "#" data-toggle = "modal" data-target = "#add_title"><span class = "glyphicon glyphicon-plus"></span> Add new </button>
 	<br />
 	<br />
 	<table id = "table" class = "table table-bordered">
