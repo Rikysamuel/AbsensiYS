@@ -3,6 +3,34 @@ require_once '../Manager/DbManager.php';
 ?>
 
 <div class = "alert alert-info"> Jemaat Listing</div>
+<div class="filter well col-lg-12" style="padding-bottom:20px;">
+<label>PA:</label>
+<?php
+	$pa = "-"; $pmkp = "-";
+	if (isset($_GET['pa']) && count($_GET) > 0) {
+		$pa = $_GET["pa"];
+	}
+
+	if (isset($_GET['pmkp']) && count($_GET) > 0) {
+		$pmkp = $_GET["pmkp"];
+	}
+?>
+<select class="form-control" id="PA">
+	<option value="-">Select</option>
+	<option value="t" <?php if ($pa == "t") {echo "selected";}  ?>>Yes</option>
+	<option value="f" <?php if ($pa == "f") {echo "selected";}  ?>>No</option>
+</select>
+<br />
+<label>PMKP:</label>
+<select class="form-control" id="PMKP">
+	<option value="-">Select</option>
+	<option value="t" <?php if ($pmkp == "t") {echo "selected";}  ?>>Yes</option>
+	<option value="f" <?php if ($pmkp == "f") {echo "selected";}  ?>>No</option>
+</select>
+<br />
+<button  class = "btn btn-primary" name = "filter" id="jemaat-filter"><span class = "glyphicon glyphicon-search"></span> Filter</button>
+</div>
+
 <div class = "modal fade" id = "add_jemaat" tabindex = "-1" role = "dialog" aria-labelledby = "myModallabel">
 	<div class = "modal-dialog" role = "document">
 		<div class = "modal-content panel-primary">
@@ -153,8 +181,28 @@ require_once '../Manager/DbManager.php';
 		</thead>
 		<tbody>
 			<?php
-				$result = Select("jemaat");
-				if (count($result) > 0) {
+				$condition = "";
+				if (isset($_GET['pa']) && count($_GET) > 0) {
+					$condition = $condition."pa = '".$_GET["pa"]."'";
+				}
+
+				if (isset($_GET['pmkp']) && count($_GET) > 0) {
+					if ($condition != "") {
+						$condition = $condition." AND ";
+					}
+
+					$condition = $condition."pmkp = '".$_GET['pmkp']."'";
+				}
+
+				if ($condition != "") {
+					$result = Select("jemaat", $condition);
+				} else {
+					$result = Select("jemaat");
+				}
+
+				$length = is_array($result) ? count($result) : 0;
+
+				if ($length > 0) {
 					foreach($result as &$res){
 				?>
 				<tr>
@@ -218,6 +266,21 @@ require_once '../Manager/DbManager.php';
 			$jemaat_id = $(this).attr('name');
 			$('#edit_query').load('../Widgets/Jemaat/WJemaatEdit.php?jemaat_id=' + $jemaat_id);
 		});
+	});
 
+	$("#jemaat-filter").click(function(){
+		var pa = $("#PA").val();
+		var pmkp = $("#PMKP").val();
+
+		var filters = "?";
+		if (pa != "-") {
+			filters += "pa=" + pa;
+		}
+
+		if (pmkp != "-") {
+			filters += "&pmkp=" + pmkp;
+		}
+
+		window.location = "http://" + window.location.host + window.location.pathname + filters;
 	});
 </script>
