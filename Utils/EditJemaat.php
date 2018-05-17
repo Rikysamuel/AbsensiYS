@@ -40,6 +40,17 @@
 		return;
 	}
 
+	$PMKP = escape($_POST['PMKP']);
+	if (!in_array($PA, $yesNo)) {
+		echo '
+			<script type = "text/javascript">
+				alert("PMKP not valid.");
+				window.location = "../Pages/Jemaat.php";
+			</script>
+		';
+		return;
+	}
+
 	$baptism = escape($_POST['baptism']);
 	if (!in_array($baptism, $yesNo)) {
 		echo '
@@ -53,7 +64,7 @@
 
 	$id = escape($_REQUEST['jemaat_id']);
 
-	$ret = Update("jemaat", "nama_lengkap = '$fullname', nama_panggilan = '$nick_name', golongan_darah = '$blodType', hobi = '$hobby', alamat = '$address', tempat_lahir = '$birth_place', tanggal_lahir = '$birth_date', status = '$status', nomor_telepon = '$phone', ID_line = '$line', instagram = '$insta', kontak_keluarga = '$fam_phone', baptisan_air = '$baptism', pelayanan = '$service', PA = '$PA', komsel = '$komsel'", "jemaat_id=$id");
+	$ret = Update("jemaat", "nama_lengkap = '$fullname', nama_panggilan = '$nick_name', golongan_darah = '$blodType', hobi = '$hobby', alamat = '$address', tempat_lahir = '$birth_place', tanggal_lahir = '$birth_date', status = '$status', nomor_telepon = '$phone', ID_line = '$line', instagram = '$insta', kontak_keluarga = '$fam_phone', baptisan_air = '$baptism', pelayanan = '$service', pa = '$PA', pmkp = '$PMKP', komsel = '$komsel'", "jemaat_id=$id");
 
 	echo '
 		<script type = "text/javascript">

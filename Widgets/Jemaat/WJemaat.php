@@ -84,6 +84,13 @@ require_once '../Manager/DbManager.php';
 						</select>
 					</div>
 					<div class = "form-group">
+						<label>PMKP:</label>
+						<select class="form-control" name="PMKP">
+							<option value="1">Yes</option>
+							<option value="0" selected="selected">No</option>
+						</select>
+					</div>
+					<div class = "form-group">
 						<label>Komsel:</label>
 						<input type = "text" name = "komsel" placeholder="(Optional)" class = "form-control" />
 					</div>
@@ -139,6 +146,7 @@ require_once '../Manager/DbManager.php';
 				<th>Baptism</th>
 				<th>Service</th>
 				<th>PA</th>
+				<th>PMKP</th>
 				<th>Komsel</th>
 				<th>Action</th>
 			</tr>
@@ -165,6 +173,7 @@ require_once '../Manager/DbManager.php';
 					<td> <?php echo ($res['baptisan_air'] == "t") ? "Yes" : "No"; ?> </td>
 					<td> <?php echo $res['pelayanan']; ?> </td>
 					<td> <?php echo ($res['pa'] == "t") ? "Yes" : "No"; ?> </td>
+					<td> <?php echo ($res['pmkp'] == "t") ? "Yes" : "No"; ?></td>
 					<td> <?php echo $res['komsel']; ?> </td>
 					<td>
 						<a class = "btn btn-danger rjemaat_id" name = "<?php echo $res['jemaat_id']?>" href = "#" data-toggle = "modal" data-target = "#delete">

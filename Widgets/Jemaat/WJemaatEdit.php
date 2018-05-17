@@ -50,7 +50,7 @@
 		</div>
 		<div class = "form-group">
 			<label>Line ID:</label>
-			<input type = "text" name = "line" placeholder="(Optional)" class = "form-control" value="<?php echo $ret[0]['ID_line']?>"/>
+			<input type = "text" name = "line" placeholder="(Optional)" class = "form-control" value="<?php echo $ret[0]['id_line']?>"/>
 		</div>
 		<div class = "form-group">
 			<label>Instagram Username:</label>
@@ -63,8 +63,8 @@
 		<div class = "form-group">
 			<label>Baptism:</label>
 			<select class="form-control" name="baptism">
-				<option value="1" <?php if ($ret[0]['baptisan_air'] == "1") { echo "selected='selected'"; } ?> >Yes</option>
-				<option value="0" <?php if ($ret[0]['baptisan_air'] == "0") { echo "selected='selected'"; } ?> >No</option>
+				<option value="1" <?php if ($ret[0]['baptisan_air'] == "t") { echo "selected='selected'"; } ?> >Yes</option>
+				<option value="0" <?php if ($ret[0]['baptisan_air'] == "f") { echo "selected='selected'"; } ?> >No</option>
 			</select>
 		</div>
 		<div class = "form-group">
@@ -74,8 +74,15 @@
 		<div class = "form-group">
 			<label>PA:</label>
 			<select class="form-control" name="PA">
-				<option value="1" <?php if ($ret[0]['PA'] == "1") { echo "selected='selected'"; } ?> >Yes</option>
-				<option value="0" <?php if ($ret[0]['PA'] == "0") { echo "selected='selected'"; } ?> >No</option>
+				<option value="1" <?php if ($ret[0]['pa'] == "t") { echo "selected='selected'"; } ?> >Yes</option>
+				<option value="0" <?php if ($ret[0]['pa'] == "f") { echo "selected='selected'"; } ?> >No</option>
+			</select>
+		</div>
+		<div class = "form-group">
+			<label>PMKP:</label>
+			<select class="form-control" name="PMKP">
+				<option value="1" <?php if ($ret[0]['pmkp'] == "t") { echo "selected='selected'"; } ?> >Yes</option>
+				<option value="0" <?php if ($ret[0]['pmkp'] == "f") { echo "selected='selected'"; } ?> >No</option>
 			</select>
 		</div>
 		<div class = "form-group">
